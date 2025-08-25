@@ -22,10 +22,14 @@ services:
       - SHELL=/bin/bash
     working_dir: /home/frappe
     volumes:
+      # Mount your project files
       - .:/workspace
+      # Persist bench sites (databases, files, configs)
+      - sites-volume:/workspace/frappe-bench/sites
     ports:
-      - 8000:8000
-      - 9000:9000
+      - "8000:8000"
+      - "9000:9000"
 
 volumes:
   mariadb-data:
+  sites-volume:
