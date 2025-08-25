@@ -32,18 +32,17 @@ services:
   sonarqube:
     image: sonarqube:9.9-community
     container_name: sonarqube
-    ports:
-      - "9001:9000"   # SonarQube UI available at localhost:9001
     environment:
       - SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true
+    ports:
+      - "9001:9000"
     volumes:
       - sonarqube_data:/opt/sonarqube/data
-      - sonarqube_extensions:/opt/sonarqube/extensions
       - sonarqube_logs:/opt/sonarqube/logs
+      - sonarqube_extensions:/opt/sonarqube/extensions
 
 volumes:
   mariadb-data:
-  sites-volume:
   sonarqube_data:
-  sonarqube_extensions:
   sonarqube_logs:
+  sonarqube_extensions:
